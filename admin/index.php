@@ -2,6 +2,6 @@
 if ( ! defined( '\ABSPATH' ) ) { exit; }
 if(!is_admin()) {return false;}
 
-namespace ServerNFO\backend;
+namespace ServerNFO\admin;
 
 const PATH = __FILE__;

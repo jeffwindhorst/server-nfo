@@ -1,4 +1,6 @@
 <?php
+namespace ServerNFO\backend;
+
 if ( ! defined( '\ABSPATH' ) ) { exit; }
 
 /**
@@ -7,7 +9,7 @@ if ( ! defined( '\ABSPATH' ) ) { exit; }
  * @author Jeff Windhorst
  */
 
-namespace ServerNFO\backend;
+namespace ServerNFO\admin;
 
 class ServerNFOManager {
     

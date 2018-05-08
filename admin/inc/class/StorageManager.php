@@ -1,13 +1,13 @@
 <?php
 if ( ! defined( '\ABSPATH' ) ) { exit; }
 
-namespace ServerNFO\backend;
+namespace ServerNFO\admin;
 
 /**
- * Description of MysqlManager
+ * Functionality to calculate and display storage space
  *
  * @author Jeff Windhorst
  */
-class MysqlManager {
+class StorageManager {
     //put your code here
 }

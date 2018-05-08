@@ -1,7 +1,7 @@
 <?php
 if ( ! defined( '\ABSPATH' ) ) { exit; }
 
-namespace ServerNFO\backend;
+namespace ServerNFO\admin;
 
 /**
  * Description of PhpManager

@@ -1,4 +1,6 @@
 <?php
+namespace ServerNFO;
+
 if ( ! defined( '\ABSPATH' ) ) { exit; }
 
 /* 
@@ -10,8 +12,6 @@ if ( ! defined( '\ABSPATH' ) ) { exit; }
  * Author: Jeff Windhorst
  * Date: 5/7/2018
  */
-
-namespace ServerNFO;
 
 const NAME ='ServerNFO';
 
@@ -29,26 +29,26 @@ add_action('plugins_loaded', function() {
     require_once PATH . 'global/index.php';
     
     if(is_admin()) {
-        require_once PATH . 'backend/class/ServerNFOManager.php';
-        require_once PATH . 'backend/class/MysqlManager.php';
-        require_once PATH . 'backend/class/PhpManager.php';
-        require_once PATH . 'backend/class/StorageManager.php';
+        require_once PATH . 'admin/class/ServerNFOManager.php';
+        require_once PATH . 'admin/class/MysqlManager.php';
+        require_once PATH . 'admin/class/PhpManager.php';
+        require_once PATH . 'admin/class/StorageManager.php';
     }
     
     do_action(SLUG . '-loaded');
 });
 
 register_activation_hook(__FILE__, function(){
-    require_once PATH . '/backend/inc/activation.php';
-    backend\activate();
+    
+    require_once PATH . '/admin/inc/class/ServerNFOManager.php';
+    \ServerNFO\admin\activation();
     
     register_uninstall_hook(__FILE__, function(){
-       require_once PATH . '/backend/inc/uninstall.php';
-       backend\uninstall();
+       admin\uninstall();
     });
 });
 
 register_deactivation_hook(__DIR__, function(){
-    require_once PATH . '/backend/inc/deactivation'; 
+    admin\deactivate();
 });
 
