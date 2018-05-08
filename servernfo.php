@@ -21,3 +21,18 @@ const SLUG = 'server-nfo';
 const PREFIX = 'SNFO';
 
 const PATH = __DIR__;
+
+add_action('plugins_loaded', function() {
+    do_action(SLUG . '-load');
+    
+    require_once PATH . 'global/index.php';
+    
+    if(is_admin()) {
+        require_once PATH . 'backend/index.php';
+    }
+    
+    if(!is_admin()) {
+        require_once PATH . 'frontend/index.php';
+    }
+    do_action(SLUG . '-loaded');
+});
