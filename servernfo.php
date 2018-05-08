@@ -1,4 +1,5 @@
 <?php
+if ( ! defined( '\ABSPATH' ) ) { exit; }
 
 /* 
  * Plugin Name: Server NFO
@@ -28,11 +29,26 @@ add_action('plugins_loaded', function() {
     require_once PATH . 'global/index.php';
     
     if(is_admin()) {
-        require_once PATH . 'backend/index.php';
+        require_once PATH . 'backend/class/ServerNFOManager.php';
+        require_once PATH . 'backend/class/MysqlManager.php';
+        require_once PATH . 'backend/class/PhpManager.php';
+        require_once PATH . 'backend/class/StorageManager.php';
     }
     
-    if(!is_admin()) {
-        require_once PATH . 'frontend/index.php';
-    }
     do_action(SLUG . '-loaded');
 });
+
+register_activation_hook(__FILE__, function(){
+    require_once PATH . '/backend/inc/activation.php';
+    backend\activate();
+    
+    register_uninstall_hook(__FILE__, function(){
+       require_once PATH . '/backend/inc/uninstall.php';
+       backend\uninstall();
+    });
+});
+
+register_deactivation_hook(__DIR__, function(){
+    require_once PATH . '/backend/inc/deactivation'; 
+});
+
